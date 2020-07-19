@@ -1,8 +1,8 @@
 const User = require('../models/user');
+const verifyToken = require('../middleware/auth');
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const { JsonWebTokenError } = require('jsonwebtoken');
 const { log } = console;
 
 router.post('/register', async (req, res, next) => {
@@ -53,6 +53,15 @@ router.post('/login', async (req, res, next) => {
     res.status(200).json({ status: 'success', token });
   } catch ({ message }) {
     log(message);
+  }
+});
+
+router.get('/verify', verifyToken, async (req, res, next) => {
+  try {
+    log(req.user._id);
+    res.send('Verified');
+  } catch (error) {
+    log(error);
   }
 });
 
