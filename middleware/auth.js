@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const { log } = console;
 
-module.exports = (req, res, next) => {
+const verifyToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
   if (typeof authHeader === 'undefined')
     return res
@@ -21,4 +21,8 @@ module.exports = (req, res, next) => {
     log(message);
     res.status(400).json({ status: 'error', error: 'Invalid Token' });
   }
+};
+
+module.exports = {
+  verifyToken,
 };
