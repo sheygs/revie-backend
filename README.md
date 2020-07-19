@@ -15,7 +15,7 @@ $ npm install
 ### Rename _.env.sample_ to .env and set database connection
 
 ```
-DATABASE_URL=mongodb+srv://olusegun:<DATABASE_PASSWORD>@cluster0.orhxc.mongodb.net/<DATABASE_NAME>?retryWrites=true&w=majority
+DATABASE_URL=mongodb+srv://<USER>:<DATABASE_PASSWORD>@cluster0.orhxc.mongodb.net/<DATABASE_NAME>?retryWrites=true&w=majority
 ```
 
 ## Run
@@ -33,7 +33,7 @@ Visit http://localhost:4000/api/v1
 | method | route     | description |
 | ------ | --------- | ----------- |
 | POST   | /register | Create user |
-| POST   | /signIn   | Login user  |
+| POST   | /login    | Login user  |
 
 `/api/v1/reviews`
 
