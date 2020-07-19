@@ -1,4 +1,5 @@
 const usersRoute = require('./routes/users');
+const reviewsRoute = require('./routes/reviews');
 const express = require('express');
 const { log } = console;
 const app = express();
@@ -8,6 +9,7 @@ dbConnection();
 // req.body
 app.use(express.json());
 app.use('/api/v1/auth', usersRoute);
+app.use('/api/v1/reviews', reviewsRoute);
 
 app.get('/api/v1', (req, res) => {
   res.send('Welcome to the Review platform');
