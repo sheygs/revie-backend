@@ -24,7 +24,7 @@ DATABASE_URL=mongodb+srv://<USER>:<DATABASE_PASSWORD>@cluster0.orhxc.mongodb.net
 $ npm run dev
 ```
 
-Visit https://stormy-brook-47562.herokuapp.com/api/v1
+Visit https://aqueous-bastion-45644.herokuapp.com/
 
 ### Available endpoints
 
