@@ -10,10 +10,11 @@ const registerUser = async (req, res, next) => {
   }
   try {
     let user = await User.findOne({ email });
-    if (user)
+    if (user) {
       return res
         .status(400)
         .json({ status: 'error', error: 'User already exists' });
+    }
     const salt = await bcrypt.genSalt(10);
     const hashed = await bcrypt.hash(password, salt);
     user = new User({
@@ -38,8 +39,9 @@ const loginUser = async (req, res, next) => {
   }
   try {
     const user = await User.findOne({ email });
-    if (!user)
+    if (!user) {
       return res.status(400).json({ status: 'error', error: 'Invalid Email' });
+    }
     const validPassword = await bcrypt.compare(password, user.password);
     if (!validPassword)
       return res
