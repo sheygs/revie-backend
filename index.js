@@ -11,8 +11,20 @@ app.use(express.json());
 app.use('/api/v1/auth', usersRoute);
 app.use('/api/v1/reviews', reviewsRoute);
 
-app.get('/api/v1', (req, res) => {
-  res.send('Welcome to the Review platform');
+// base path
+app.get('/', (req, res) => {
+  res.status(200).json({
+    status: 'success',
+    message: 'Welcome to the Review API',
+  });
+});
+
+// non-existent path
+app.all('*', (req, res, next) => {
+  return status(404).json({
+    status: 'error',
+    message: `Can't find ${req.originalUrl} on this server`,
+  });
 });
 
 const port = process.env.PORT || 4000;
